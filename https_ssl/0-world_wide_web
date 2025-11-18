@@ -2,7 +2,7 @@
 # Displays DNS information about subdomains
 
 domain="$1"
-subdomain="$2="$2"
+subdomain="$2"
 
 # List of subdomains to check
 subdomains=("www" "lb-01" "web-01" "web-02")
