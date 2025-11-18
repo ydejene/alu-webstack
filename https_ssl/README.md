@@ -1,0 +1,1 @@
+adding sub-domains as A records and SSL termination using our load balancer

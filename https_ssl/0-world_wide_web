@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Displays DNS information about subdomains
+
+domain="$1"
+subdomain="$2="$2"
+
+# List of subdomains to check
+subdomains=("www" "lb-01" "web-01" "web-02")
+
+# Function to get record info
+get_record() {
+    local sub="$1"
+    local result
+    result=$(dig +short "$sub.$domain" | tail -n1)
+    if [[ -n "$result" ]]; then
+        record_type=$(dig "$sub.$domain" | grep -A1 'ANSWER SECTION' | tail -1 | awk '{print $4}')
+        echo "The subdomain $sub is a $record_type record and points to $result"
+    fi
+}
+
+# If only domain provided → show all 4
+if [[ -z "$subdomain2" ]]; then
+    for sub in "${subdomains[@]}"; do
+        get_record "$sub"
+    done
+else
+    get_record "$subdomain2"
+fi
