@@ -19,10 +19,10 @@ get_record() {
 }
 
 # If only domain provided → show all 4
-if [[ -z "$subdomain2" ]]; then
+if [[ -z "$subdomain" ]]; then
     for sub in "${subdomains[@]}"; do
         get_record "$sub"
     done
 else
-    get_record "$subdomain2"
+    get_record "$subdomain"
 fi
